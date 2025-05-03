@@ -3,5 +3,6 @@ platform :ios, '13.0'
 target 'basicvideocall' do
   use_frameworks!
   pod 'HMSSDK'
+  pod 'Starscream', '~> 4.0.8'
 
 end

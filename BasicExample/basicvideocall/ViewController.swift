@@ -8,7 +8,9 @@
 import UIKit
 import HMSSDK
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController , AntMediaClientDelegate{
+    
     var hmsSDK = HMSSDK.build()
     lazy var stackView: UIStackView = {
         let result = UIStackView()
@@ -28,9 +30,51 @@ class ViewController: UIViewController {
 
     var trackViewMap = [HMSTrack: HMSVideoView]()
 
+    var antMediaClient : AntMediaClient = AntMediaClient()
+    
+    
+   
+        public func clientHasError(_ message: String) {
+            
+        }
+        
+        public func publishStarted(streamId: String) {
+            
+        }
+        
+        public func publishFinished(streamId: String) {
+            
+        }
+        
+        public func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool) {
+            
+        }
+        
+        public func audioSessionDidStartPlayOrRecord(streamId: String) {
+            //antMediaClient.speakerOn()
+        }
+        
+        
+    
+    
+    @IBOutlet weak var videoView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        joinRoom()
+        //joinRoom()
+        
+        antMediaClient.delegate = self
+        
+        antMediaClient.setLocalView(container: videoView, mode: .scaleAspectFit);
+        // antMediaClient.setRemoteView(remoteContainer: videoView, mode: .scaleAspectFit);
+
+       // antMediaClient.setCameraPosition(position: .front)
+        antMediaClient.setWebSocketServerUrl(url: "wss://ovh36.antmedia.io:5443/WebRTCAppEE/websocket");
+        var streamId = "stream123456";
+        //antMediaClient.initPeerConnection(streamId: streamId);
+        
+        antMediaClient.publish(streamId: streamId)
+        //antMediaClient.play(streamId: streamId)
     }
 
     func joinRoom() {
