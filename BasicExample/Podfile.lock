@@ -1,7 +1,9 @@
 PODS:
-  - HMSSDK (0.5.3):
-    - HMSWebRTC (= 1.0.5113)
-  - HMSWebRTC (1.0.5113)
+  - HMSAnalyticsSDK (0.0.2)
+  - HMSSDK (0.9.3):
+    - HMSAnalyticsSDK (= 0.0.2)
+    - HMSWebRTC (= 1.0.5116)
+  - HMSWebRTC (1.0.5116)
   - Starscream (4.0.8)
 
 DEPENDENCIES:
@@ -10,13 +12,15 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - HMSAnalyticsSDK
     - HMSSDK
     - HMSWebRTC
     - Starscream
 
 SPEC CHECKSUMS:
-  HMSSDK: 5dd09ec0438539722122e0970dce43e67471c6ab
-  HMSWebRTC: 6bd851709766bf4b28fd89046a65654e86741aed
+  HMSAnalyticsSDK: 4d2a88a729b1eb42f3d25f217c28937ec318a5b7
+  HMSSDK: 0b25c97c4575e19e0e20acc49ca5fa8bdf1df626
+  HMSWebRTC: ae54e9dd91b869051b283b43b14f57d43b7bf8e1
   Starscream: 19b5533ddb925208db698f0ac508a100b884a1b9
 
 PODFILE CHECKSUM: eb72bb8ef330526f2b3a860a65b419d4b4b05389

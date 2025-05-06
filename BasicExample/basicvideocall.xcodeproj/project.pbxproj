@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D4F3032E0F68F6C0F664CAA /* Pods_basicvideocall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 557712BAE53624B7FBE48BA7 /* Pods_basicvideocall.framework */; };
 		9132155226B03E74002694A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132155126B03E74002694A8 /* AppDelegate.swift */; };
 		9132155426B03E74002694A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132155326B03E74002694A8 /* SceneDelegate.swift */; };
 		9132155626B03E74002694A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9132155526B03E74002694A8 /* ViewController.swift */; };
@@ -25,12 +24,11 @@
 		A8C9D5C62DC65F4900F84EBE /* AntMediaClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C9D5B92DC65F4900F84EBE /* AntMediaClientDelegate.swift */; };
 		A8C9D5C72DC65F4900F84EBE /* AntMediaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C9D5B82DC65F4900F84EBE /* AntMediaClient.swift */; };
 		A8C9D5C82DC65F4900F84EBE /* ClientStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C9D5AF2DC65F4900F84EBE /* ClientStatistics.swift */; };
+		D03B79F174BDA6EC76CD38E3 /* Pods_basicvideocall.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96CD92FD06789D1E08DFFD04 /* Pods_basicvideocall.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		392C184E10F0CE915A32978F /* Pods-basicvideocall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-basicvideocall.debug.xcconfig"; path = "Target Support Files/Pods-basicvideocall/Pods-basicvideocall.debug.xcconfig"; sourceTree = "<group>"; };
-		557712BAE53624B7FBE48BA7 /* Pods_basicvideocall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_basicvideocall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		790132DC1F06D392FF8DDF70 /* Pods-basicvideocall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-basicvideocall.release.xcconfig"; path = "Target Support Files/Pods-basicvideocall/Pods-basicvideocall.release.xcconfig"; sourceTree = "<group>"; };
+		2A06121FB10DB16DD2F677D8 /* Pods-basicvideocall.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-basicvideocall.release.xcconfig"; path = "Target Support Files/Pods-basicvideocall/Pods-basicvideocall.release.xcconfig"; sourceTree = "<group>"; };
 		9132154E26B03E74002694A8 /* basicvideocall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = basicvideocall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9132155126B03E74002694A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9132155326B03E74002694A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +37,8 @@
 		9132155A26B03E76002694A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9132155D26B03E76002694A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9132155F26B03E76002694A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		945AE74EEA7FE6D08304A891 /* Pods-basicvideocall.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-basicvideocall.debug.xcconfig"; path = "Target Support Files/Pods-basicvideocall/Pods-basicvideocall.debug.xcconfig"; sourceTree = "<group>"; };
+		96CD92FD06789D1E08DFFD04 /* Pods_basicvideocall.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_basicvideocall.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8C9D5AF2DC65F4900F84EBE /* ClientStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStatistics.swift; sourceTree = "<group>"; };
 		A8C9D5B12DC65F4900F84EBE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A8C9D5B22DC65F4900F84EBE /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -57,28 +57,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D4F3032E0F68F6C0F664CAA /* Pods_basicvideocall.framework in Frameworks */,
+				D03B79F174BDA6EC76CD38E3 /* Pods_basicvideocall.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29555E6584732E987FA343B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96CD92FD06789D1E08DFFD04 /* Pods_basicvideocall.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		85074B5303D336E2BF8A8CF7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				392C184E10F0CE915A32978F /* Pods-basicvideocall.debug.xcconfig */,
-				790132DC1F06D392FF8DDF70 /* Pods-basicvideocall.release.xcconfig */,
+				945AE74EEA7FE6D08304A891 /* Pods-basicvideocall.debug.xcconfig */,
+				2A06121FB10DB16DD2F677D8 /* Pods-basicvideocall.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		907C03D165796945A4529863 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				557712BAE53624B7FBE48BA7 /* Pods_basicvideocall.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9132154526B03E74002694A8 = {
@@ -87,7 +87,7 @@
 				9132155026B03E74002694A8 /* basicvideocall */,
 				9132154F26B03E74002694A8 /* Products */,
 				85074B5303D336E2BF8A8CF7 /* Pods */,
-				907C03D165796945A4529863 /* Frameworks */,
+				29555E6584732E987FA343B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,11 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9132156226B03E76002694A8 /* Build configuration list for PBXNativeTarget "basicvideocall" */;
 			buildPhases = (
-				E01851193A5186822C72D539 /* [CP] Check Pods Manifest.lock */,
+				F13F99F1F45EAD047D9F4B1C /* [CP] Check Pods Manifest.lock */,
 				9132154A26B03E74002694A8 /* Sources */,
 				9132154B26B03E74002694A8 /* Frameworks */,
 				9132154C26B03E74002694A8 /* Resources */,
-				711C2F8717FF2A4DA9810F25 /* [CP] Embed Pods Frameworks */,
+				E0D836DC87DB924D8DA93D71 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -224,7 +224,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		711C2F8717FF2A4DA9810F25 /* [CP] Embed Pods Frameworks */ = {
+		E0D836DC87DB924D8DA93D71 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,20 +232,16 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-basicvideocall/Pods-basicvideocall-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-basicvideocall/Pods-basicvideocall-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-basicvideocall/Pods-basicvideocall-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E01851193A5186822C72D539 /* [CP] Check Pods Manifest.lock */ = {
+		F13F99F1F45EAD047D9F4B1C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -431,7 +427,7 @@
 		};
 		9132156326B03E76002694A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 392C184E10F0CE915A32978F /* Pods-basicvideocall.debug.xcconfig */;
+			baseConfigurationReference = 945AE74EEA7FE6D08304A891 /* Pods-basicvideocall.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -452,7 +448,7 @@
 		};
 		9132156426B03E76002694A8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 790132DC1F06D392FF8DDF70 /* Pods-basicvideocall.release.xcconfig */;
+			baseConfigurationReference = 2A06121FB10DB16DD2F677D8 /* Pods-basicvideocall.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
