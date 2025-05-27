@@ -139,6 +139,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         var mainTrack: String?
         var trackList: [String]
     }
+    struct Subscriber: Codable {
+        let subscriberId: String
+    }
     
     public override init() {
     }
@@ -1039,6 +1042,30 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 let streamId = message[STREAM_ID] as? String ?? ""
                 self.delegate?.eventHappened(streamId: streamId, eventType: definition, payload: message)
             }
+            else if definition == SUBSCRIBER_COUNT {
+                let streamId = message[STREAM_ID] as? String ?? ""
+                let count = message["count"] as! Int
+                self.delegate?.subscriberCount(streamId: streamId, subscriberCount: count);
+            }
+            else if definition == SUBSCRIBER_LIST_NOTIFICATION {
+                let streamId = message[STREAM_ID] as? String ?? ""
+                if let subscriberListJSONArray = message["subscriberList"] as? [String] {
+                    var subscribers: [Subscriber] = []
+
+                    for jsonString in subscriberListJSONArray {
+                        if let data = jsonString.data(using: .utf8) {
+                            do {
+                                let subscriber = try JSONDecoder().decode(Subscriber.self, from: data)
+                                subscribers.append(subscriber)
+                            } catch {
+                                print("Failed to decode subscriber: \(error)")
+                            }
+                        }
+                    }
+                    let subscriberIds = subscribers.map { $0.subscriberId }
+                    self.delegate?.subscriberList(streamId: streamId, subscriberList: subscriberIds)
+                }
+            }
         case ROOM_INFORMATION_COMMAND:
             if let updatedStreamsInTheRoom = message[STREAMS] as? [String] {
                 // check that there is a new stream exists
@@ -1274,6 +1301,24 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             command: GET_BROADCAST_OBJECT_COMMAND,
             streamId: id
         )
+    }
+    
+    public func getSubscriberCount(streamId id: String) {
+        sendCommand(
+            command: GET_SUBSCRIBER_COUNT_COMMAND,
+            streamId: id
+        )
+    }
+    
+    public func getSubscriberList(streamId id: String, offset: Int, limit: Int) {
+        
+        let jsonString = [
+            COMMAND: GET_SUBSCRIBER_LIST_COMMAND,
+            STREAM_ID: id,
+            OFFSET: offset,
+            SIZE: limit].json
+        
+        webSocket?.write(string: jsonString)
     }
     
     func invalidateTimers() {
