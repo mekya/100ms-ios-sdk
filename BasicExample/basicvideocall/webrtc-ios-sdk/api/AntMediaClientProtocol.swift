@@ -129,7 +129,7 @@ public protocol AntMediaClientProtocol {
         - streamId: the id of the stream that is going to be published. 
         - mainTrackId: the id of the main stream or conference room  that this stream will be published. It's optional value
      */
-    func publish(streamId: String, token: String, mainTrackId: String, subsriberId: String, subscriberCode: String, subscriberName: String)
+    func publish(streamId: String, token: String, mainTrackId: String, subsriberId: String, subscriberCode: String, subscriberName: String, onlyDataChannel: Bool)
 
     
     /**
@@ -137,7 +137,7 @@ public protocol AntMediaClientProtocol {
      - Parameters
        - streamId: the id of the stream or id of the conference room. It supports playing both of them
     */
-    func play(streamId: String, token: String, subsriberId: String, subscriberCode: String, subscriberName: String)
+    func play(streamId: String, token: String, subsriberId: String, subscriberCode: String, subscriberName: String, onlyDataChannel: Bool)
     
     /**
     Sets the camera position front or back. This method is effective if it's called before `initPeerConnection()` and `start()` method.
