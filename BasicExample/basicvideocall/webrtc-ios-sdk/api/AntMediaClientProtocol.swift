@@ -129,7 +129,7 @@ public protocol AntMediaClientProtocol {
         - streamId: the id of the stream that is going to be published. 
         - mainTrackId: the id of the main stream or conference room  that this stream will be published. It's optional value
      */
-    func publish(streamId: String, token: String, mainTrackId: String, subsriberId: String, subscriberCode: String, subscriberName: String, onlyDataChannel: Bool)
+    func publish(streamId: String, token: String, mainTrackId: String, subsriberId: String, subscriberCode: String, subscriberName: String, onlyDataChannel: Bool, videoEnabled: Bool)
 
     
     /**
