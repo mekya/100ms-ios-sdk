@@ -52,6 +52,7 @@ public enum AntMediaClientMode: Int {
 
 open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
+    
     internal static var isDebug: Bool = false
     internal static var isVerbose: Bool = false
     public weak var delegate: AntMediaClientDelegate?
@@ -135,6 +136,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
     
     var playOnlyDataChannel : Bool = false
+    var disableTracksByDefault: Bool = false
     var publishOnlyDataChannel : Bool = false
     
     struct HandshakeMessage: Codable {
@@ -150,10 +152,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         var subscriberCode: String?
         var subscriberName: String?
         var onlyDataChannel: Bool?
-    }
-    
-    struct Subscriber: Codable {
-        let subscriberId: String
+        var disableTracksByDefault: Bool?
     }
     
     public override init() {
@@ -229,7 +228,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
         let handShakeMesage = HandshakeMessage(command: mode.getName(), streamId: streamId, token: token, video: self.videoEnable, audio: self.audioEnable, mainTrack: self.mainTrackId, trackList: trackList,
             subscriberId: self.subscriberId, subscriberCode: self.subscriberCode, subscriberName: self.subscriberName,
-                                               onlyDataChannel: mode == .publish ? self.publishOnlyDataChannel : self.playOnlyDataChannel)
+                                               onlyDataChannel: mode == .publish ? self.publishOnlyDataChannel : self.playOnlyDataChannel, disableTracksByDefault: self.disableTracksByDefault)
         
         let json = try! JSONEncoder().encode(handShakeMesage)
         return String(data: json, encoding: .utf8)!
@@ -409,14 +408,15 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
-    public func play(streamId: String, token: String = "", subsriberId: String = "", subscriberCode: String = "", subscriberName: String = "", onlyDataChannel: Bool=false)
+    public func play(streamId: String, token: String = "", subscriberId: String = "", subscriberCode: String = "", subscriberName: String = "", onlyDataChannel: Bool=false, disableTracksByDefault: Bool=false)
     {
         
         self.playerStreamId = streamId
         self.playOnlyDataChannel = onlyDataChannel
+        self.disableTracksByDefault = disableTracksByDefault
         
-        if !subsriberId.isEmpty {
-            self.subscriberId = subsriberId
+        if !subscriberId.isEmpty {
+            self.subscriberId = subscriberId
         }
 
         if !subscriberCode.isEmpty {
@@ -918,7 +918,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                         // clean the connection
                         self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
                         AntMediaClient.printf("Reconnecting to publish the stream:\(streamId)")
-                        self.publish(streamId: streamId)
+                        self.publish(streamId: streamId, onlyDataChannel: self.publishOnlyDataChannel, videoEnabled: self.videoEnable)
                     } else {
                         AntMediaClient.printf("Not trying to reconnect to publish the stream:\(streamId) because ice connection state is not disconnected")
                     }
@@ -939,7 +939,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     // clean the connection
                     self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
                     AntMediaClient.printf("Reconnecting to play the stream:\(streamId)")
-                    self.play(streamId: streamId)
+                    self.play(streamId: streamId, onlyDataChannel: self.playOnlyDataChannel, disableTracksByDefault:self.disableTracksByDefault)
                 } else {
                     AntMediaClient.printf("Not trying to reconnect to play the stream:\(streamId) because ice connection state is not disconnected")
                 }
@@ -1108,8 +1108,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                             }
                         }
                     }
-                    let subscriberIds = subscribers.map { $0.subscriberId }
-                    self.delegate?.subscriberList(streamId: streamId, subscriberList: subscriberIds)
+                    self.delegate?.subscriberList(streamId: streamId, subscriberList: subscribers)
                 }
             }
         case ROOM_INFORMATION_COMMAND:
@@ -1438,9 +1437,7 @@ extension AntMediaClient: WebRTCClientDelegate {
         if let eventType = json?[EVENT_TYPE] {
             // event happened
             if let incomingStreamId = json?[STREAM_ID] {
-                
-                self.delegate?.eventHappened(streamId: incomingStreamId as! String, eventType: eventType as! String)
-                
+                                
                 self.delegate?.eventHappened(
                     streamId: incomingStreamId as! String,
                     eventType: eventType as! String
